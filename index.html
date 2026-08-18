@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fluid Grids - Modern responsive web design powered by CSS Flexbox and Grid.">
+  <title>Fluid Grids | Modern Responsive Design</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= HEADER & NAV (Flexbox) ================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </span>
+        <span>Fluid<span class="text-primary">Grids</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-item active">Home</a>
+        <a href="#features" class="nav-item">Features</a>
+        <a href="#demo" class="nav-item">Interactive Demo</a>
+        <a href="#showcase" class="nav-item">Showcase</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Get Started</a>
+        
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO SECTION (CSS Grid / Flexbox) ================= -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>MODERN RESPONSIVE ARCHITECTURE</span>
+          </div>
+
+          <h1>Build flexible, fluid layouts with <span class="gradient-text">Flexbox & Grid</span>.</h1>
+          
+          <p class="hero-desc">
+            A beautiful, clean design system built from the ground up to demonstrate modern responsive techniques — one-dimensional alignment with Flexbox and two-dimensional structures with CSS Grid.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#demo" class="btn btn-primary">
+              <span>Try Live Demo</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+          </div>
+
+          <!-- Mini Feature Pills (Flexbox) -->
+          <div class="hero-perks">
+            <div class="perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% Responsive</span>
+            </div>
+            <div class="perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero Dependencies</span>
+            </div>
+            <div class="perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Fluid Typography</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Card Mockup (Flexbox / Glassmorphism) -->
+        <div class="hero-visual">
+          <div class="preview-card">
+            <div class="preview-card-header">
+              <div class="window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="window-title">fluid-grids.css</div>
+            </div>
+            <div class="preview-card-body">
+              <div class="code-line"><span class="code-kw">.container</span> {</div>
+              <div class="code-line indent"><span class="code-prop">display</span>: <span class="code-val">grid</span>;</div>
+              <div class="code-line indent"><span class="code-prop">grid-template-columns</span>: <span class="code-val">repeat(auto-fit, minmax(280px, 1fr))</span>;</div>
+              <div class="code-line indent"><span class="code-prop">gap</span>: <span class="code-val">24px</span>;</div>
+              <div class="code-line">}</div>
+              <div class="code-spacer"></div>
+              <div class="code-line"><span class="code-kw">.navbar</span> {</div>
+              <div class="code-line indent"><span class="code-prop">display</span>: <span class="code-val">flex</span>;</div>
+              <div class="code-line indent"><span class="code-prop">justify-content</span>: <span class="code-val">space-between</span>;</div>
+              <div class="code-line indent"><span class="code-prop">align-items</span>: <span class="code-val">center</span>;</div>
+              <div class="code-line">}</div>
+            </div>
+            <div class="floating-badge">
+              <div class="floating-badge-icon">⚡</div>
+              <div>
+                <strong>Auto-Adaptive</strong>
+                <p>Adapts to screen resize seamlessly</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES SECTION (CSS Grid) ================= -->
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-badge">POWERFUL & SIMPLE</span>
+          <h2>Everything you need for modern layouts</h2>
+          <p>Clean structure, high performance, and responsive behavior without unnecessary complexity.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
+            <h3>CSS Grid 2D System</h3>
+            <p>Perfect for multi-column grids, image galleries, and structured card layouts with automatic wrapping.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-indigo">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+            </div>
+            <h3>Flexbox 1D Flow</h3>
+            <p>Effortlessly distribute navigation items, action buttons, chips, and vertical card alignments.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-emerald">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <h3>Mobile First Design</h3>
+            <p>Engineered to adapt cleanly from 320px mobile screens up to 4K ultra-wide monitors.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+            <h3>Modern Design Tokens</h3>
+            <p>Organized with CSS custom properties for effortless theme adjustments and spacing consistency.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <h3>Lightweight & Fast</h3>
+            <p>Pure vanilla HTML, CSS, and minimal JS. No heavy dependencies or slow page loads.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-rose">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3>Production Ready</h3>
+            <p>Clean semantic tags, accessible contrast ratios, and organized styling ready for your next project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INTERACTIVE DEMO (Live Flex/Grid Switcher) ================= -->
+    <section class="section demo-section" id="demo">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-badge">LIVE INTERACTIVE PLAYGROUND</span>
+          <h2>See Flexbox & Grid in Action</h2>
+          <p>Click the buttons below to switch layout engines and watch the cards reorganize instantly.</p>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-controls">
+            <span class="demo-label">Layout Engine:</span>
+            <div class="demo-btn-group">
+              <button class="demo-btn active" id="btnFlex">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                CSS Flexbox
+              </button>
+              <button class="demo-btn" id="btnGrid">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                CSS Grid (3-Col)
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Stage -->
+          <div class="demo-stage flex-mode" id="demoStage">
+            <div class="stage-item">
+              <div class="stage-num">01</div>
+              <h4>Hero Header</h4>
+              <p>Flex alignment</p>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">02</div>
+              <h4>Feature Grid</h4>
+              <p>2D coordinates</p>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">03</div>
+              <h4>Card Gallery</h4>
+              <p>Auto-fit sizing</p>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">04</div>
+              <h4>Responsive Nav</h4>
+              <p>Space-between</p>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">05</div>
+              <h4>Form Alignment</h4>
+              <p>Flex input wrap</p>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">06</div>
+              <h4>Footer Columns</h4>
+              <p>Fluid scaling</p>
+            </div>
+          </div>
+
+          <div class="demo-info">
+            <span class="info-label">Active CSS Rule:</span>
+            <code id="cssOutput">display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SHOWCASE SECTION (CSS Grid 2-Col Split) ================= -->
+    <section class="section showcase-section" id="showcase">
+      <div class="container showcase-grid">
+        <div class="showcase-media">
+          <img src="images/hero.jpg" alt="Modern Architecture Showcase" class="showcase-img">
+        </div>
+        <div class="showcase-content">
+          <span class="sub-badge">EFFORTLESS ADAPTABILITY</span>
+          <h2>Built for every screen, device, and viewport.</h2>
+          <p>
+            With <strong>Fluid Grids</strong>, you don't need hundreds of lines of complex CSS media queries. By combining CSS Grid's <code>repeat(auto-fit, minmax(...))</code> with Flexbox's natural wrapping, your elements reposition themselves fluidly.
+          </p>
+
+          <div class="feature-bullets">
+            <div class="bullet-item">
+              <div class="bullet-check">✓</div>
+              <div>
+                <strong>Fluid Typography</strong>
+                <p>Text automatically scales smoothly with screen size.</p>
+              </div>
+            </div>
+            <div class="bullet-item">
+              <div class="bullet-check">✓</div>
+              <div>
+                <strong>Touch-Friendly Controls</strong>
+                <p>Easy-to-tap buttons and mobile off-canvas navigation.</p>
+              </div>
+            </div>
+            <div class="bullet-item">
+              <div class="bullet-check">✓</div>
+              <div>
+                <strong>Lightweight & Clean</strong>
+                <p>Easy to inspect, modify, and build upon.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary">Start Building Today</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA & CONTACT (Flexbox) ================= -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-content">
+            <h2>Ready to build with Fluid Grids?</h2>
+            <p>Get in touch with us or join our newsletter to receive clean responsive design templates.</p>
+          </div>
+          
+          <form class="cta-form" id="subscribeForm" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Fluid Grids!'); this.reset();">
+            <input type="email" placeholder="Enter your email address" required class="cta-input">
+            <button type="submit" class="btn btn-dark">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER (Flexbox) ================= -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </span>
+          <span>Fluid<span class="text-primary">Grids</span></span>
+        </a>
+        <p class="footer-tagline">Crafting modern, fluid web experiences with pure CSS Flexbox and Grid.</p>
+      </div>
+
+      <div class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Fluid Grids. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Documentation</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
