@@ -1,28 +1,41 @@
 /**
  * Fluid Grids - Interactive Engine
+ * Handles responsive navigation, live Flex/Grid playground, and clipboard interactions.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initDemoSwitcher();
+  initCopyCss();
   initScrollNav();
 });
 
-/* 1. Mobile Navigation Toggle */
+/* 1. Mobile Navigation Toggle & Keyboard Accessibility */
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('navLinks');
 
   if (mobileToggle && navLinks) {
     mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      const isExpanded = navLinks.classList.toggle('active');
+      mobileToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
     });
 
     // Close when clicking any nav item
     navLinks.querySelectorAll('.nav-item').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Close when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.focus();
+      }
     });
   }
 }
@@ -36,28 +49,61 @@ function initDemoSwitcher() {
 
   if (!btnFlex || !btnGrid || !stage || !cssOutput) return;
 
-  btnFlex.addEventListener('click', () => {
+  function setFlexMode() {
     btnFlex.classList.add('active');
+    btnFlex.setAttribute('aria-pressed', 'true');
     btnGrid.classList.remove('active');
+    btnGrid.setAttribute('aria-pressed', 'false');
     
     stage.classList.remove('grid-mode');
     stage.classList.add('flex-mode');
     
     cssOutput.textContent = 'display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;';
-  });
+  }
 
-  btnGrid.addEventListener('click', () => {
+  function setGridMode() {
     btnGrid.classList.add('active');
+    btnGrid.setAttribute('aria-pressed', 'true');
     btnFlex.classList.remove('active');
+    btnFlex.setAttribute('aria-pressed', 'false');
     
     stage.classList.remove('flex-mode');
     stage.classList.add('grid-mode');
     
     cssOutput.textContent = 'display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;';
+  }
+
+  btnFlex.addEventListener('click', setFlexMode);
+  btnGrid.addEventListener('click', setGridMode);
+}
+
+/* 3. Copy CSS to Clipboard */
+function initCopyCss() {
+  const btnCopy = document.getElementById('btnCopyCss');
+  const copyBtnText = document.getElementById('copyBtnText');
+  const cssOutput = document.getElementById('cssOutput');
+
+  if (!btnCopy || !copyBtnText || !cssOutput) return;
+
+  btnCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(cssOutput.textContent.trim());
+      copyBtnText.textContent = 'Copied!';
+      btnCopy.classList.add('btn-primary');
+      btnCopy.classList.remove('btn-secondary');
+
+      setTimeout(() => {
+        copyBtnText.textContent = 'Copy CSS';
+        btnCopy.classList.remove('btn-primary');
+        btnCopy.classList.add('btn-secondary');
+      }, 2000);
+    } catch {
+      copyBtnText.textContent = 'Selected';
+    }
   });
 }
 
-/* 3. Active Link Highlight on Scroll */
+/* 4. Active Link Highlight on Scroll */
 function initScrollNav() {
   const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-item');
