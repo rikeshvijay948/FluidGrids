@@ -45,6 +45,25 @@
   --transition: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-slate-900: #f8fafc;
+    --color-slate-800: #f1f5f9;
+    --color-slate-700: #e2e8f0;
+    --color-slate-600: #cbd5e1;
+    --color-slate-500: #94a3b8;
+    --color-slate-400: #64748b;
+    --color-slate-200: #334155;
+    --color-slate-100: #1e293b;
+    --color-slate-50: #0b0f19;
+    --color-white: #111827;
+    --color-primary-soft: rgba(37, 99, 235, 0.18);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 30px -4px rgba(0, 0, 0, 0.5);
+  }
+}
+
 /* --------------------------------------------------------------------------
    2. Reset & Global Styles
    -------------------------------------------------------------------------- */
