@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Fluid Grids - Modern responsive web design powered by CSS Flexbox and Grid.">
+  <meta name="keywords" content="CSS Grid, Flexbox, Responsive Web Design, Web Layouts, HTML5, CSS3">
+  <meta name="author" content="Rikesh Vijay">
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fluid Grids | Modern Responsive Design">
+  <meta property="og:description" content="Build flexible, fluid layouts with pure CSS Flexbox & CSS Grid. 100% responsive, zero dependencies.">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fluid Grids | Modern Responsive Design">
+  <meta name="twitter:description" content="Build flexible, fluid layouts with pure CSS Flexbox & CSS Grid.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><rect x='3' y='3' width='7' height='7' rx='1'/><rect x='14' y='3' width='7' height='7' rx='1'/><rect x='14' y='14' width='7' height='7' rx='1'/><rect x='3' y='14' width='7' height='7' rx='1'/></svg>">
+  
   <title>Fluid Grids | Modern Responsive Design</title>
   
   <!-- Google Fonts: Plus Jakarta Sans -->
@@ -14,6 +31,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ================= HEADER & NAV (Flexbox) ================= -->
   <header class="navbar" id="navbar">
@@ -52,7 +72,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- ================= HERO SECTION (CSS Grid / Flexbox) ================= -->
     <section class="hero" id="home">
       <div class="container hero-grid">
@@ -206,12 +226,12 @@
         <div class="demo-card">
           <div class="demo-controls">
             <span class="demo-label">Layout Engine:</span>
-            <div class="demo-btn-group">
-              <button class="demo-btn active" id="btnFlex">
+            <div class="demo-btn-group" role="group" aria-label="Layout engine options">
+              <button class="demo-btn active" id="btnFlex" aria-pressed="true">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
                 CSS Flexbox
               </button>
-              <button class="demo-btn" id="btnGrid">
+              <button class="demo-btn" id="btnGrid" aria-pressed="false">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                 CSS Grid (3-Col)
               </button>
@@ -219,7 +239,7 @@
           </div>
 
           <!-- Live Stage -->
-          <div class="demo-stage flex-mode" id="demoStage">
+          <div class="demo-stage flex-mode" id="demoStage" role="region" aria-label="Live layout demonstration">
             <div class="stage-item">
               <div class="stage-num">01</div>
               <h4>Hero Header</h4>
@@ -255,6 +275,10 @@
           <div class="demo-info">
             <span class="info-label">Active CSS Rule:</span>
             <code id="cssOutput">display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;</code>
+            <button class="btn btn-sm btn-secondary copy-btn" id="btnCopyCss" title="Copy CSS to clipboard" aria-label="Copy active CSS rule">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span id="copyBtnText">Copy CSS</span>
+            </button>
           </div>
         </div>
       </div>
