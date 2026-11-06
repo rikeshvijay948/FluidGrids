@@ -1,6 +1,8 @@
 # 🌐 Fluid Grids
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Deploy to GitHub Pages](https://github.com/rikeshvijay948/FluidGrids/actions/workflows/deploy.yml/badge.svg)](https://github.com/rikeshvijay948/FluidGrids/actions/workflows/deploy.yml)
+[![PWA Ready](https://img.shields.io/badge/PWA-Ready-orange.svg)](manifest.json)
 [![HTML5](https://img.shields.io/badge/HTML5-Semantic-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-Flexbox%20%26%20Grid-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla%20ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -22,10 +24,14 @@
 ## ⚡ Key Highlights
 
 - **Zero External Dependencies**: Pure vanilla HTML5, CSS3, and ES6+ JavaScript.
-- **Dynamic Live Playground**: Real-time interactive sandbox allowing users to switch between Flexbox and Grid layouts.
+- **Dual-Mode Theme Engine**: Manual Dark / Light switcher with `localStorage` persistence and automatic OS preference synchronization.
+- **Dynamic Interactive Playground**: Real-time layout switcher with custom gap adjustments, column presets, alignment controls, dynamic node creation, and one-click CSS copy.
+- **Progressive Web App (PWA)**: Includes `manifest.json` and mobile meta definitions for standalone installability.
+- **Scroll Enhancements**: Real-time top scroll reading progress indicator and smooth return-to-top floating button.
 - **Fluid Typography**: Dynamic scaling with CSS `clamp()` expressions across viewports.
-- **Mobile First Navigation**: Smooth off-canvas dropdown menu with keyboard dismissibility.
-- **Accessible (WCAG AA)**: Semantic landmarks, high-contrast outlines, and ARIA compliant roles.
+- **Mobile First Navigation**: Smooth off-canvas dropdown menu with keyboard dismissibility (`Esc`).
+- **Accessible (WCAG AA)**: Semantic landmarks, high-contrast outlines, skip-to-content anchor, and ARIA compliant roles.
+- **Automated CI/CD**: Built-in GitHub Actions workflow for asset verification and deployment to GitHub Pages.
 
 ---
 
@@ -46,14 +52,20 @@
 
 ```text
 fluid-grids/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml    # GitHub Actions CI/CD deployment
 ├── images/
 │   └── hero.jpg          # High-resolution architectural preview asset
 ├── .gitignore            # Git exclusion definitions
+├── CHANGELOG.md          # Semantic version release notes
+├── CONTRIBUTING.md       # Developer contribution guidelines
 ├── index.html            # Semantic HTML5 document
-├── styles.css            # Responsive CSS design tokens & layout rules
-├── script.js             # Vanilla JS for live demo and navigation
+├── LICENSE               # MIT Open Source License
+├── manifest.json         # PWA Web App Manifest
 ├── README.md             # Project documentation
-└── LICENSE               # MIT Open Source License
+├── script.js             # Vanilla JS for live demo and navigation
+└── styles.css            # Responsive CSS design tokens & layout rules
 ```
 
 ---

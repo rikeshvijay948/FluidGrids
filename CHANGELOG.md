@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-11-06
+
+### Added
+- **Manual Theme Switcher**: Added dark/light/system theme toggle in the navbar with `localStorage` persistence and live system preference sync.
+- **Dynamic Playground Controls**: Added real-time gap selector (`8px` to `32px`), Flexbox justify controls, CSS Grid column presets, and dynamic node addition/removal buttons.
+- **Scroll Progress Bar**: Added top reading progress bar that dynamically indicates viewport scroll position.
+- **Back to Top Button**: Added floating smooth-scroll return button triggered upon scrolling past 300px.
+- **Progressive Web App (PWA) Support**: Added `manifest.json`, mobile icon definitions, and standalone fullscreen meta tags.
+- **CI/CD Automation**: Added GitHub Actions workflow (`deploy.yml`) for automated asset verification and GitHub Pages deployment.
+
+---
+
 ## [1.2.0] - 2026-10-26
 
 ### Added
