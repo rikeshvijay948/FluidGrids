@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDemoSwitcher();
   initCopyCss();
   initScrollNav();
+  initScrollEnhancements();
 });
 
 /* 0. Theme Toggle with LocalStorage & System Sync */
@@ -227,3 +228,37 @@ function initScrollNav() {
     });
   });
 }
+
+/* 5. Scroll Progress & Back to Top */
+function initScrollEnhancements() {
+  const progressBar = document.getElementById('scrollProgress');
+  const backToTopBtn = document.getElementById('backToTop');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (progressBar) {
+      progressBar.style.width = `${scrollPercent}%`;
+    }
+
+    if (backToTopBtn) {
+      if (scrollTop > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+  }, { passive: true });
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+}
+
