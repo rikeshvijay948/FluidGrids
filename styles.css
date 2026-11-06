@@ -654,14 +654,58 @@ button, input {
 }
 
 .demo-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--color-slate-200);
   margin-bottom: 24px;
+}
+
+.demo-options-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.demo-group-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.demo-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-select-wrap label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-slate-700);
+}
+
+.demo-select {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-slate-200);
+  background-color: var(--color-white);
+  color: var(--color-slate-700);
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.demo-select:focus {
+  border-color: var(--color-primary);
+}
+
+.demo-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
 }
 
 .demo-label {

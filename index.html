@@ -243,16 +243,59 @@
 
         <div class="demo-card">
           <div class="demo-controls">
-            <span class="demo-label">Layout Engine:</span>
-            <div class="demo-btn-group" role="group" aria-label="Layout engine options">
-              <button class="demo-btn active" id="btnFlex" aria-pressed="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
-                CSS Flexbox
-              </button>
-              <button class="demo-btn" id="btnGrid" aria-pressed="false">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                CSS Grid (3-Col)
-              </button>
+            <div class="demo-options-row">
+              <div class="demo-group-item">
+                <span class="demo-label">Layout Engine:</span>
+                <div class="demo-btn-group" role="group" aria-label="Layout engine options">
+                  <button class="demo-btn active" id="btnFlex" aria-pressed="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                    CSS Flexbox
+                  </button>
+                  <button class="demo-btn" id="btnGrid" aria-pressed="false">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    CSS Grid
+                  </button>
+                </div>
+              </div>
+
+              <!-- Gap selector -->
+              <div class="demo-select-wrap">
+                <label for="demoGap">Gap:</label>
+                <select id="demoGap" class="demo-select" aria-label="Select layout gap">
+                  <option value="8px">8px (Tight)</option>
+                  <option value="16px" selected>16px (Normal)</option>
+                  <option value="24px">24px (Relaxed)</option>
+                  <option value="32px">32px (Spacious)</option>
+                </select>
+              </div>
+
+              <!-- Dynamic alignment / columns selector -->
+              <div class="demo-select-wrap" id="flexAlignWrap">
+                <label for="demoFlexAlign">Justify:</label>
+                <select id="demoFlexAlign" class="demo-select" aria-label="Select flex justify content">
+                  <option value="space-between" selected>space-between</option>
+                  <option value="center">center</option>
+                  <option value="space-around">space-around</option>
+                  <option value="flex-start">flex-start</option>
+                  <option value="flex-end">flex-end</option>
+                </select>
+              </div>
+
+              <div class="demo-select-wrap" id="gridColsWrap" style="display: none;">
+                <label for="demoGridCols">Columns:</label>
+                <select id="demoGridCols" class="demo-select" aria-label="Select grid template columns">
+                  <option value="repeat(3, 1fr)" selected>3 Columns (repeat(3, 1fr))</option>
+                  <option value="repeat(2, 1fr)">2 Columns (repeat(2, 1fr))</option>
+                  <option value="repeat(4, 1fr)">4 Columns (repeat(4, 1fr))</option>
+                  <option value="repeat(auto-fit, minmax(140px, 1fr))">Auto-Fit (minmax 140px)</option>
+                </select>
+              </div>
+
+              <!-- Card count add/remove -->
+              <div class="demo-item-actions">
+                <button class="btn btn-sm btn-secondary" id="btnAddItem" title="Add item card">+ Add Item</button>
+                <button class="btn btn-sm btn-secondary" id="btnRemoveItem" title="Remove item card">- Remove Item</button>
+              </div>
             </div>
           </div>
 

@@ -68,41 +68,113 @@ function initMobileNav() {
   }
 }
 
-/* 2. Interactive Flex / Grid Demo Switcher */
+/* 2. Interactive Flex / Grid Demo Switcher & Dynamic Controls */
 function initDemoSwitcher() {
   const btnFlex = document.getElementById('btnFlex');
   const btnGrid = document.getElementById('btnGrid');
   const stage = document.getElementById('demoStage');
   const cssOutput = document.getElementById('cssOutput');
+  const gapSelect = document.getElementById('demoGap');
+  const flexAlignSelect = document.getElementById('demoFlexAlign');
+  const gridColsSelect = document.getElementById('demoGridCols');
+  const flexAlignWrap = document.getElementById('flexAlignWrap');
+  const gridColsWrap = document.getElementById('gridColsWrap');
+  const btnAddItem = document.getElementById('btnAddItem');
+  const btnRemoveItem = document.getElementById('btnRemoveItem');
 
   if (!btnFlex || !btnGrid || !stage || !cssOutput) return;
 
+  let isGrid = false;
+
+  function updateStage() {
+    const gap = gapSelect ? gapSelect.value : '16px';
+    stage.style.gap = gap;
+
+    if (isGrid) {
+      stage.classList.remove('flex-mode');
+      stage.classList.add('grid-mode');
+      stage.style.display = 'grid';
+      stage.style.justifyContent = '';
+
+      const cols = gridColsSelect ? gridColsSelect.value : 'repeat(3, 1fr)';
+      stage.style.gridTemplateColumns = cols;
+      cssOutput.textContent = `display: grid; grid-template-columns: ${cols}; gap: ${gap};`;
+    } else {
+      stage.classList.remove('grid-mode');
+      stage.classList.add('flex-mode');
+      stage.style.display = 'flex';
+      stage.style.gridTemplateColumns = '';
+
+      const align = flexAlignSelect ? flexAlignSelect.value : 'space-between';
+      stage.style.justifyContent = align;
+      cssOutput.textContent = `display: flex; flex-wrap: wrap; justify-content: ${align}; gap: ${gap};`;
+    }
+  }
+
   function setFlexMode() {
+    isGrid = false;
     btnFlex.classList.add('active');
     btnFlex.setAttribute('aria-pressed', 'true');
     btnGrid.classList.remove('active');
     btnGrid.setAttribute('aria-pressed', 'false');
-    
-    stage.classList.remove('grid-mode');
-    stage.classList.add('flex-mode');
-    
-    cssOutput.textContent = 'display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;';
+
+    if (flexAlignWrap) flexAlignWrap.style.display = 'flex';
+    if (gridColsWrap) gridColsWrap.style.display = 'none';
+
+    updateStage();
   }
 
   function setGridMode() {
+    isGrid = true;
     btnGrid.classList.add('active');
     btnGrid.setAttribute('aria-pressed', 'true');
     btnFlex.classList.remove('active');
     btnFlex.setAttribute('aria-pressed', 'false');
-    
-    stage.classList.remove('flex-mode');
-    stage.classList.add('grid-mode');
-    
-    cssOutput.textContent = 'display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;';
+
+    if (flexAlignWrap) flexAlignWrap.style.display = 'none';
+    if (gridColsWrap) gridColsWrap.style.display = 'flex';
+
+    updateStage();
   }
 
   btnFlex.addEventListener('click', setFlexMode);
   btnGrid.addEventListener('click', setGridMode);
+
+  if (gapSelect) gapSelect.addEventListener('change', updateStage);
+  if (flexAlignSelect) flexAlignSelect.addEventListener('change', updateStage);
+  if (gridColsSelect) gridColsSelect.addEventListener('change', updateStage);
+
+  // Dynamic Add Item
+  if (btnAddItem) {
+    btnAddItem.addEventListener('click', () => {
+      const currentItems = stage.querySelectorAll('.stage-item');
+      const nextNum = String(currentItems.length + 1).padStart(2, '0');
+      const titles = ['Component Box', 'Flex Item', 'Grid Cell', 'Widget Block', 'Sub-grid Column'];
+      const randomTitle = titles[currentItems.length % titles.length];
+
+      const newItem = document.createElement('div');
+      newItem.className = 'stage-item';
+      newItem.innerHTML = `
+        <div class="stage-num">${nextNum}</div>
+        <h4>${randomTitle}</h4>
+        <p>Dynamic node</p>
+      `;
+      stage.appendChild(newItem);
+    });
+  }
+
+  // Dynamic Remove Item
+  if (btnRemoveItem) {
+    btnRemoveItem.addEventListener('click', () => {
+      const items = stage.querySelectorAll('.stage-item');
+      if (items.length > 2) {
+        stage.removeChild(items[items.length - 1]);
+      }
+    });
+  }
+
+  // Initial stage configuration
+  updateStage();
 }
 
 /* 3. Copy CSS to Clipboard */
