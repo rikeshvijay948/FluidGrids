@@ -13,7 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollNav();
   initScrollEnhancements();
   initSubscribeForm();
+  registerServiceWorker();
 });
+
+/* Service Worker Registration */
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Fluid Grids Service Worker registered'))
+        .catch(err => console.warn('Service Worker registration skipped:', err));
+    });
+  }
+}
 
 /* Toast Notification Utility */
 function showToast(message, icon = '✓') {
