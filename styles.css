@@ -743,14 +743,92 @@ button, input {
   box-shadow: var(--shadow-sm);
 }
 
+/* Device Viewport Simulation Bar */
+.demo-viewport-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 16px;
+  background-color: var(--color-slate-100);
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+
+.viewport-label {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--color-slate-600);
+}
+
+.viewport-btn-group {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.viewport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-slate-600);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.viewport-btn:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.viewport-btn.active {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-slate-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.viewport-indicator {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-slate-500);
+  font-family: monospace;
+}
+
+.demo-stage-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+}
+
 /* Stage */
 .demo-stage {
+  width: 100%;
+  max-width: 100%;
   padding: 24px;
   background-color: var(--color-slate-50);
   border: 2px dashed var(--color-slate-200);
   border-radius: var(--radius-md);
   min-height: 220px;
-  transition: all var(--transition);
+  transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.demo-stage.viewport-tablet {
+  max-width: 768px;
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md);
+}
+
+.demo-stage.viewport-mobile {
+  max-width: 375px;
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md);
 }
 
 .stage-item {

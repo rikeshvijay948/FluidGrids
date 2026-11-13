@@ -309,37 +309,59 @@
             </div>
           </div>
 
-          <!-- Live Stage -->
-          <div class="demo-stage flex-mode" id="demoStage" role="region" aria-label="Live layout demonstration">
-            <div class="stage-item">
-              <div class="stage-num">01</div>
-              <h4>Hero Header</h4>
-              <p>Flex alignment</p>
+          <!-- Device Viewport Preview Bar -->
+          <div class="demo-viewport-bar">
+            <span class="viewport-label">Simulate Viewport:</span>
+            <div class="viewport-btn-group" role="group" aria-label="Device viewport simulation">
+              <button class="viewport-btn active" data-viewport="desktop" aria-pressed="true" title="Desktop Viewport (Fluid 100%)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                Desktop (Fluid)
+              </button>
+              <button class="viewport-btn" data-viewport="tablet" aria-pressed="false" title="Tablet Viewport (768px)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                Tablet (768px)
+              </button>
+              <button class="viewport-btn" data-viewport="mobile" aria-pressed="false" title="Mobile Viewport (375px)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                Mobile (375px)
+              </button>
             </div>
-            <div class="stage-item">
-              <div class="stage-num">02</div>
-              <h4>Feature Grid</h4>
-              <p>2D coordinates</p>
-            </div>
-            <div class="stage-item">
-              <div class="stage-num">03</div>
-              <h4>Card Gallery</h4>
-              <p>Auto-fit sizing</p>
-            </div>
-            <div class="stage-item">
-              <div class="stage-num">04</div>
-              <h4>Responsive Nav</h4>
-              <p>Space-between</p>
-            </div>
-            <div class="stage-item">
-              <div class="stage-num">05</div>
-              <h4>Form Alignment</h4>
-              <p>Flex input wrap</p>
-            </div>
-            <div class="stage-item">
-              <div class="stage-num">06</div>
-              <h4>Footer Columns</h4>
-              <p>Fluid scaling</p>
+            <span class="viewport-indicator" id="viewportIndicator">Width: 100% (Fluid)</span>
+          </div>
+
+          <div class="demo-stage-wrapper" id="stageWrapper">
+            <!-- Live Stage -->
+            <div class="demo-stage flex-mode" id="demoStage" role="region" aria-label="Live layout demonstration">
+              <div class="stage-item">
+                <div class="stage-num">01</div>
+                <h4>Hero Header</h4>
+                <p>Flex alignment</p>
+              </div>
+              <div class="stage-item">
+                <div class="stage-num">02</div>
+                <h4>Feature Grid</h4>
+                <p>2D coordinates</p>
+              </div>
+              <div class="stage-item">
+                <div class="stage-num">03</div>
+                <h4>Card Gallery</h4>
+                <p>Auto-fit sizing</p>
+              </div>
+              <div class="stage-item">
+                <div class="stage-num">04</div>
+                <h4>Responsive Nav</h4>
+                <p>Space-between</p>
+              </div>
+              <div class="stage-item">
+                <div class="stage-num">05</div>
+                <h4>Form Alignment</h4>
+                <p>Flex input wrap</p>
+              </div>
+              <div class="stage-item">
+                <div class="stage-num">06</div>
+                <h4>Footer Columns</h4>
+                <p>Fluid scaling</p>
+              </div>
             </div>
           </div>
 

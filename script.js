@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initMobileNav();
   initDemoSwitcher();
+  initViewportSimulator();
   initCopyCss();
   initScrollNav();
   initScrollEnhancements();
@@ -176,6 +177,39 @@ function initDemoSwitcher() {
 
   // Initial stage configuration
   updateStage();
+}
+
+/* 2b. Device Viewport Simulation Controls */
+function initViewportSimulator() {
+  const viewportBtns = document.querySelectorAll('.viewport-btn');
+  const stage = document.getElementById('demoStage');
+  const indicator = document.getElementById('viewportIndicator');
+
+  if (!viewportBtns.length || !stage) return;
+
+  viewportBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.viewport;
+      viewportBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      stage.classList.remove('viewport-tablet', 'viewport-mobile');
+
+      if (mode === 'tablet') {
+        stage.classList.add('viewport-tablet');
+        if (indicator) indicator.textContent = 'Width: 768px (Tablet)';
+      } else if (mode === 'mobile') {
+        stage.classList.add('viewport-mobile');
+        if (indicator) indicator.textContent = 'Width: 375px (Mobile)';
+      } else {
+        if (indicator) indicator.textContent = 'Width: 100% (Fluid)';
+      }
+    });
+  });
 }
 
 /* 3. Copy CSS to Clipboard */
