@@ -372,6 +372,10 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
               <span id="copyBtnText">Copy CSS</span>
             </button>
+            <button class="btn btn-sm btn-primary export-btn" id="btnExportCode" title="Export complete HTML and CSS markup" aria-label="Export code snippet">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export Code</span>
+            </button>
           </div>
         </div>
       </div>
@@ -473,6 +477,40 @@
       </div>
     </div>
   </footer>
+
+  <!-- Code Export Modal Dialog -->
+  <div class="modal-backdrop" id="exportModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="modalTitle">Export Layout Component</h3>
+          <p class="modal-subtitle">Ready-to-use HTML & CSS snippet based on your live playground settings.</p>
+        </div>
+        <button class="modal-close-btn" id="modalClose" aria-label="Close export modal">&times;</button>
+      </div>
+
+      <div class="modal-tabs" role="tablist">
+        <button class="modal-tab active" data-tab="boilerplate" role="tab" aria-selected="true">Full HTML Template</button>
+        <button class="modal-tab" data-tab="css" role="tab" aria-selected="false">CSS Only</button>
+        <button class="modal-tab" data-tab="html" role="tab" aria-selected="false">HTML Only</button>
+      </div>
+
+      <div class="modal-body">
+        <pre class="modal-code"><code id="modalCodeSnippet"></code></pre>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" id="btnDownloadTemplate">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download .html
+        </button>
+        <button class="btn btn-primary btn-sm" id="btnCopySnippet">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy Code Snippet
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Floating Back to Top Button -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Scroll back to top">

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDemoSwitcher();
   initViewportSimulator();
   initCopyCss();
+  initExportModal();
   initScrollNav();
   initScrollEnhancements();
   initSubscribeForm();
@@ -335,5 +336,115 @@ function initSubscribeForm() {
     });
   }
 }
+
+/* 7. Interactive Code Export Modal */
+function initExportModal() {
+  const exportBtn = document.getElementById('btnExportCode');
+  const modal = document.getElementById('exportModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalCode = document.getElementById('modalCodeSnippet');
+  const modalTabs = document.querySelectorAll('.modal-tab');
+  const copySnippetBtn = document.getElementById('btnCopySnippet');
+  const downloadBtn = document.getElementById('btnDownloadTemplate');
+  const stage = document.getElementById('demoStage');
+  const cssOutput = document.getElementById('cssOutput');
+
+  if (!exportBtn || !modal || !modalCode) return;
+
+  let activeTab = 'boilerplate';
+
+  function generateCode() {
+    const isGrid = stage.classList.contains('grid-mode');
+    const stageItems = stage.querySelectorAll('.stage-item');
+    const activeCss = cssOutput ? cssOutput.textContent.trim() : '';
+
+    const itemsHtml = Array.from(stageItems).map((item, idx) => {
+      const num = item.querySelector('.stage-num')?.textContent || String(idx + 1).padStart(2, '0');
+      const title = item.querySelector('h4')?.textContent || 'Card Item';
+      const desc = item.querySelector('p')?.textContent || 'Responsive block';
+      return `  <div class="layout-card">\n    <span class="card-num">${num}</span>\n    <h3>${title}</h3>\n    <p>${desc}</p>\n  </div>`;
+    }).join('\n');
+
+    const htmlOnly = `<div class="${isGrid ? 'grid-container' : 'flex-container'}">\n${itemsHtml}\n</div>`;
+
+    const cssOnly = `/* Layout Container */\n.${isGrid ? 'grid-container' : 'flex-container'} {\n  ${activeCss.split('; ').join(';\n  ')}\n}\n\n/* Card Styles */\n.layout-card {\n  background: #ffffff;\n  border: 1px solid #e2e8f0;\n  border-radius: 8px;\n  padding: 16px;\n  box-shadow: 0 1px 3px rgba(0,0,0,0.05);\n}\n\n.card-num {\n  font-weight: 800;\n  color: #2563eb;\n  font-size: 0.75rem;\n}\n\n.layout-card h3 {\n  margin: 4px 0 2px;\n  font-size: 1rem;\n}\n\n.layout-card p {\n  margin: 0;\n  font-size: 0.85rem;\n  color: #64748b;\n}`;
+
+    const boilerplate = `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Fluid Grids Layout Export</title>\n  <style>\n    body {\n      font-family: system-ui, -apple-system, sans-serif;\n      padding: 32px;\n      background: #f8fafc;\n      color: #0f172a;\n      line-height: 1.5;\n    }\n\n${cssOnly.split('\n').map(line => '    ' + line).join('\n')}\n  </style>\n</head>\n<body>\n\n${htmlOnly.split('\n').map(line => '  ' + line).join('\n')}\n\n</body>\n</html>`;
+
+    if (activeTab === 'html') {
+      modalCode.textContent = htmlOnly;
+    } else if (activeTab === 'css') {
+      modalCode.textContent = cssOnly;
+    } else {
+      modalCode.textContent = boilerplate;
+    }
+  }
+
+  function openModal() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    generateCode();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  exportBtn.addEventListener('click', openModal);
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  modalTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      modalTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      activeTab = tab.dataset.tab;
+      generateCode();
+    });
+  });
+
+  if (copySnippetBtn) {
+    copySnippetBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(modalCode.textContent);
+        showToast('Code snippet copied to clipboard!', '📋');
+      } catch {
+        showToast('Snippet selected', 'ℹ️');
+      }
+    });
+  }
+
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const blob = new Blob([modalCode.textContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `fluid-${activeTab === 'css' ? 'styles.css' : 'layout.html'}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('File downloaded successfully!', '💾');
+    });
+  }
+}
+
 
 
