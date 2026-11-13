@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.0] - 2026-11-13
+
+### Added
+- **Responsive Device Viewport Simulator**: Interactive desktop (100%), tablet (768px), and mobile (375px) framing controls in the playground to preview layouts across viewports.
+- **Offline PWA Service Worker (`sw.js`)**: Full offline caching and instant page shell loading with cache-first asset strategy.
+- **Interactive Code Export Modal**: Dynamic exporter generating ready-to-use HTML, CSS, and standalone boilerplate with one-click copy and `.html`/`.css` file download.
+- **Floating Toast Notification System**: Smooth, non-blocking notification alerts for theme changes, clipboard actions, device switching, item adjustments, and form updates.
+- **Keyboard Shortcuts System & Modal**: Global hotkeys (`T` for theme toggle, `F` for flexbox, `G` for grid, `E` for export, `?` for shortcuts, `Esc` to close) with accessible reference dialog.
+
+---
+
 ## [1.3.0] - 2026-11-06
 
 ### Added

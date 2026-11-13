@@ -25,13 +25,30 @@
 
 - **Zero External Dependencies**: Pure vanilla HTML5, CSS3, and ES6+ JavaScript.
 - **Dual-Mode Theme Engine**: Manual Dark / Light switcher with `localStorage` persistence and automatic OS preference synchronization.
+- **Responsive Device Viewport Simulator**: Switch between Desktop (100%), Tablet (768px), and Mobile (375px) live previews in the sandbox.
 - **Dynamic Interactive Playground**: Real-time layout switcher with custom gap adjustments, column presets, alignment controls, dynamic node creation, and one-click CSS copy.
-- **Progressive Web App (PWA)**: Includes `manifest.json` and mobile meta definitions for standalone installability.
+- **Code Export Modal**: Live snippet generator exporting customized layouts into clean HTML, modular CSS, or standalone `.html`/`.css` downloadable files.
+- **Progressive Web App (PWA) with Offline Worker**: Full offline support via `sw.js` service worker cache-first shell loading and `manifest.json`.
+- **Toast Notification Engine**: Non-blocking floating status alerts across user actions and preferences.
+- **Keyboard Shortcuts (Hotkeys)**: Quick navigation keys (`T`, `F`, `G`, `E`, `?`, `Esc`) for enhanced power-user productivity and accessibility.
 - **Scroll Enhancements**: Real-time top scroll reading progress indicator and smooth return-to-top floating button.
 - **Fluid Typography**: Dynamic scaling with CSS `clamp()` expressions across viewports.
 - **Mobile First Navigation**: Smooth off-canvas dropdown menu with keyboard dismissibility (`Esc`).
 - **Accessible (WCAG AA)**: Semantic landmarks, high-contrast outlines, skip-to-content anchor, and ARIA compliant roles.
 - **Automated CI/CD**: Built-in GitHub Actions workflow for asset verification and deployment to GitHub Pages.
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action | Scope |
+| :---: | :--- | :--- |
+| <kbd>T</kbd> | Toggle between Dark and Light mode | Global |
+| <kbd>F</kbd> | Switch sandbox layout to Flexbox | Global |
+| <kbd>G</kbd> | Switch sandbox layout to CSS Grid | Global |
+| <kbd>E</kbd> | Open Code Export modal | Global |
+| <kbd>?</kbd> | Open / Close Keyboard Shortcuts reference | Global |
+| <kbd>Esc</kbd> | Dismiss open modal dialogs or mobile navigation drawer | Global |
 
 ---
 
@@ -65,7 +82,8 @@ fluid-grids/
 ├── manifest.json         # PWA Web App Manifest
 ├── README.md             # Project documentation
 ├── script.js             # Vanilla JS for live demo and navigation
-└── styles.css            # Responsive CSS design tokens & layout rules
+├── styles.css            # Responsive CSS design tokens & layout rules
+└── sw.js                 # PWA Service Worker for offline asset caching
 ```
 
 ---
