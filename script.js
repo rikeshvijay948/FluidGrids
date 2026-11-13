@@ -11,7 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyCss();
   initScrollNav();
   initScrollEnhancements();
+  initSubscribeForm();
 });
+
+/* Toast Notification Utility */
+function showToast(message, icon = '✓') {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<span class="toast-icon">${icon}</span><span>${message}</span>`;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add('toast-exit');
+    setTimeout(() => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, 250);
+  }, 2600);
+}
 
 /* 0. Theme Toggle with LocalStorage & System Sync */
 function initThemeToggle() {
@@ -30,6 +49,7 @@ function initThemeToggle() {
       const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', nextTheme);
       localStorage.setItem('fluid-theme', nextTheme);
+      showToast(`Switched to ${nextTheme} theme`, nextTheme === 'dark' ? '🌙' : '☀️');
     });
   }
 
@@ -162,6 +182,7 @@ function initDemoSwitcher() {
         <p>Dynamic node</p>
       `;
       stage.appendChild(newItem);
+      showToast(`Added card item #${nextNum}`, '➕');
     });
   }
 
@@ -171,6 +192,9 @@ function initDemoSwitcher() {
       const items = stage.querySelectorAll('.stage-item');
       if (items.length > 2) {
         stage.removeChild(items[items.length - 1]);
+        showToast('Removed layout item card', '➖');
+      } else {
+        showToast('Minimum 2 cards required', 'ℹ️');
       }
     });
   }
@@ -202,11 +226,14 @@ function initViewportSimulator() {
       if (mode === 'tablet') {
         stage.classList.add('viewport-tablet');
         if (indicator) indicator.textContent = 'Width: 768px (Tablet)';
+        showToast('Viewport set to Tablet (768px)', '📱');
       } else if (mode === 'mobile') {
         stage.classList.add('viewport-mobile');
         if (indicator) indicator.textContent = 'Width: 375px (Mobile)';
+        showToast('Viewport set to Mobile (375px)', '📱');
       } else {
         if (indicator) indicator.textContent = 'Width: 100% (Fluid)';
+        showToast('Viewport set to Fluid Desktop (100%)', '💻');
       }
     });
   });
@@ -226,6 +253,7 @@ function initCopyCss() {
       copyBtnText.textContent = 'Copied!';
       btnCopy.classList.add('btn-primary');
       btnCopy.classList.remove('btn-secondary');
+      showToast('Active CSS rule copied to clipboard!', '📋');
 
       setTimeout(() => {
         copyBtnText.textContent = 'Copy CSS';
@@ -295,4 +323,17 @@ function initScrollEnhancements() {
     });
   }
 }
+
+/* 6. Newsletter Subscription Form */
+function initSubscribeForm() {
+  const form = document.getElementById('subscribeForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Thank you for subscribing to Fluid Grids!', '🎉');
+      form.reset();
+    });
+  }
+}
+
 
