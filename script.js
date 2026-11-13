@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initViewportSimulator();
   initCopyCss();
   initExportModal();
+  initShortcutsModal();
   initScrollNav();
   initScrollEnhancements();
   initSubscribeForm();
@@ -458,5 +459,84 @@ function initExportModal() {
   }
 }
 
+/* 7. Keyboard Shortcuts System & Global Hotkeys Navigation */
+function initShortcutsModal() {
+  const btnShortcuts = document.getElementById('btnShortcuts');
+  const modal = document.getElementById('shortcutsModal');
+  const closeBtn = document.getElementById('shortcutsClose');
 
+  if (!modal) return;
 
+  function openShortcuts() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeShortcuts() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function toggleShortcuts() {
+    if (modal.classList.contains('active')) {
+      closeShortcuts();
+    } else {
+      openShortcuts();
+    }
+  }
+
+  if (btnShortcuts) {
+    btnShortcuts.addEventListener('click', toggleShortcuts);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeShortcuts);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeShortcuts();
+    }
+  });
+
+  // Global Hotkey Navigation Listener
+  document.addEventListener('keydown', (e) => {
+    const activeEl = document.activeElement;
+    const isTyping = activeEl && (
+      activeEl.tagName === 'INPUT' ||
+      activeEl.tagName === 'TEXTAREA' ||
+      activeEl.tagName === 'SELECT' ||
+      activeEl.isContentEditable
+    );
+
+    // Escape always closes shortcuts modal if open
+    if (e.key === 'Escape') {
+      if (modal.classList.contains('active')) {
+        closeShortcuts();
+      }
+      return;
+    }
+
+    // Ignore other single-key shortcuts while typing in form inputs
+    if (isTyping) return;
+
+    if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+      e.preventDefault();
+      toggleShortcuts();
+    } else if (e.key === 't' || e.key === 'T') {
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) themeBtn.click();
+    } else if (e.key === 'f' || e.key === 'F') {
+      const flexBtn = document.getElementById('btnFlex');
+      if (flexBtn) flexBtn.click();
+    } else if (e.key === 'g' || e.key === 'G') {
+      const gridBtn = document.getElementById('btnGrid');
+      if (gridBtn) gridBtn.click();
+    } else if (e.key === 'e' || e.key === 'E') {
+      const exportBtn = document.getElementById('btnExportCode');
+      if (exportBtn) exportBtn.click();
+    }
+  });
+}

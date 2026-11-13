@@ -474,9 +474,51 @@
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
         <a href="#">Documentation</a>
+        <button class="footer-btn-link" id="btnShortcuts" title="Keyboard Shortcuts (Press ?)">Shortcuts ⌨️</button>
       </div>
     </div>
   </footer>
+
+  <!-- Keyboard Shortcuts Modal Dialog -->
+  <div class="modal-backdrop" id="shortcutsModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="shortcutsTitle">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <div>
+          <h3 id="shortcutsTitle">Keyboard Shortcuts</h3>
+          <p class="modal-subtitle">Navigate Fluid Grids with speed using hotkeys.</p>
+        </div>
+        <button class="modal-close-btn" id="shortcutsClose" aria-label="Close shortcuts modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="shortcuts-list">
+          <div class="shortcut-row">
+            <span class="shortcut-desc">Toggle Dark / Light Theme</span>
+            <kbd class="shortcut-key">T</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-desc">Switch Playground to Flexbox</span>
+            <kbd class="shortcut-key">F</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-desc">Switch Playground to Grid</span>
+            <kbd class="shortcut-key">G</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-desc">Open Code Exporter</span>
+            <kbd class="shortcut-key">E</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-desc">Close Active Modal / Menu</span>
+            <kbd class="shortcut-key">Esc</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-desc">Open Shortcuts Reference</span>
+            <kbd class="shortcut-key">?</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Code Export Modal Dialog -->
   <div class="modal-backdrop" id="exportModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
